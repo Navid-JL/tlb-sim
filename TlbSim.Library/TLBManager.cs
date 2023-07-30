@@ -35,4 +35,10 @@ public class TLB
         physicalPage = -1;
         return false;
     }
+
+    public void Insert(int virtualPage, int physicalPage)
+    {
+        // Replace the oldest entry with the new one
+        entries[0] = new TLBEntry { VirtualPage = virtualPage, PhysicalPage = physicalPage };
+    }
 }

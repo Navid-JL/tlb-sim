@@ -20,4 +20,19 @@ public class TLB
     {
         entries = new TLBEntry[size];
     }
+
+    public bool Lookup(int virtualPage, out int physicalPage)
+    {
+        foreach (var entry in entries)
+        {
+            if (entry != null && entry.VirtualPage == virtualPage)
+            {
+                physicalPage = entry.PhysicalPage;
+                return true;
+            }
+        }
+
+        physicalPage = -1;
+        return false;
+    }
 }
